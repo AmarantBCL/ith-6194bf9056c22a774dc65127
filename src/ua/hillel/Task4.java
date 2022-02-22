@@ -10,16 +10,11 @@ public class Task4 {
 
     private static int[] sortArrayByParity(int[] array) {
         int[] newArr = new int[array.length];
-        int begin = 0;
-        int end = array.length - 1;
+        int begin = -1;
+        int end = array.length;
         for (int i = 0; i < array.length; i++) {
-            if (array[i] % 2 == 0) {
-                newArr[begin] = array[i];
-                begin++;
-            } else {
-                newArr[end] = array[i];
-                end--;
-            }
+            int index = array[i] % 2 == 0 ? ++begin : --end;
+            newArr[index] = array[i];
         }
 
         return newArr;
