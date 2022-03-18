@@ -1,8 +1,8 @@
-package ua.hillel;
+package ua.hillel.task4;
 
 import java.util.Arrays;
 
-public class Task4 {
+public class Main {
     public static void main(String[] args) {
         int[] testArr = new int[] {1, 2, 4, 3, 10, 9, 5, 8, 4, 7};
         System.out.println(Arrays.toString(sortArrayByParity(testArr)));
