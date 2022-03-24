@@ -14,11 +14,19 @@ public class Dog extends Animal {
         count++;
     }
 
-    public int findRunLimit() {
-        return RUN_LIMIT;
+    public void run(int distance) {
+        if (distance > RUN_LIMIT) {
+            System.out.printf("%s не может пробежать %d м!%n", getName(), distance);
+        } else {
+            System.out.printf("%s пробежал %d м%n", getName(), distance);
+        }
     }
 
-    public int findSwimLimit() {
-        return SWIM_LIMIT;
+    public void swim(int distance) {
+        if (distance > SWIM_LIMIT) {
+            System.out.printf("%s не может проплыть %d м!%n", this.getName(), distance);
+        } else {
+            System.out.printf("%s проплыл %d м%n", this.getName(), distance);
+        }
     }
 }
