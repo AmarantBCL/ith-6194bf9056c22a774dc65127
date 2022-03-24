@@ -1,6 +1,6 @@
 package ua.hillel.task7;
 
-public class Triangle implements Shape {
+public class Triangle implements ua.hillel.task7.Shape {
     private double a;
     private double b;
     private double c;
