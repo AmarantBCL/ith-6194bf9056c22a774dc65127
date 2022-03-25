@@ -16,7 +16,6 @@ public class Iterator {
     public int next() {
         int result = array[0];
         remove();
-
         return result;
     }
 
@@ -38,7 +37,6 @@ public class Iterator {
         for (int[] subArr : arr) {
             size += subArr.length;
         }
-
         return size;
     }
 
