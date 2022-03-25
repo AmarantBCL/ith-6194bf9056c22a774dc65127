@@ -20,4 +20,8 @@ public class Cat extends Animal {
             System.out.printf("%s пробежал %d м%n", getName(), distance);
         }
     }
+
+    public void swim(int distance) {
+        System.out.printf("%s не умеет плавать!%n", getName());
+    }
 }

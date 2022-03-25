@@ -1,6 +1,6 @@
 package ua.hillel.task6;
 
-public class Animal {
+public abstract class Animal {
     private String name;
 
     public String getName() {
@@ -10,4 +10,8 @@ public class Animal {
     public Animal(String name) {
         this.name = name;
     }
+
+    public abstract void run(int distance);
+
+    public abstract void swim(int distance);
 }
