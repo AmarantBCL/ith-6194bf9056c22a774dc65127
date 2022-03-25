@@ -11,11 +11,11 @@ public class Car {
 
     }
 
-    private void startFuelSystem() {
+    private void startCommand() {
 
     }
 
-    private void startCommand() {
+    private void startFuelSystem() {
 
     }
 }
