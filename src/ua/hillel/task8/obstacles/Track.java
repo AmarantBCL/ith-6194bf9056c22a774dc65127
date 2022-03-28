@@ -9,6 +9,7 @@ public class Track implements Obstacle {
         this.length = length;
     }
 
+    @Override
     public boolean overcome(Participant participant) {
         if (participant.findRunLimit() > length) {
             participant.run();

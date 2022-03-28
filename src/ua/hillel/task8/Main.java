@@ -9,7 +9,9 @@ public class Main {
         Obstacle[] obstacles = getObstacles();
         for (Participant participant : participants) {
             for (Obstacle obstacle : obstacles) {
-                if (!obstacle.overcome(participant)) break;
+                if (!obstacle.overcome(participant)) {
+                    break;
+                }
             }
         }
     }

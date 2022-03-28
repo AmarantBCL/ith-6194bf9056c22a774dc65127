@@ -9,6 +9,7 @@ public class Wall implements Obstacle {
         this.height = height;
     }
 
+    @Override
     public boolean overcome(Participant participant) {
         if (participant.findJumpLimit() > height) {
             participant.jump();
