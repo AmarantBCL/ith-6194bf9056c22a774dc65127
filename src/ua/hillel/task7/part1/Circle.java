@@ -1,6 +1,6 @@
-package ua.hillel.task7;
+package ua.hillel.task7.part1;
 
-public class Circle implements ua.hillel.task7.Shape {
+public class Circle implements Shape {
     private double radius;
 
     public Circle(double radius) {

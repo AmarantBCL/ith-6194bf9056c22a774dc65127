@@ -1,19 +1,18 @@
-package ua.hillel.task7;
+package ua.hillel.task7.part1;
 
-public class Triangle implements ua.hillel.task7.Shape {
-    private double a;
-    private double b;
-    private double c;
+public class Triangle implements Shape {
+    private double sideA;
+    private double sideB;
+    private double sideC;
 
-    public Triangle(double a, double b, double c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+    public Triangle(double sideA, double sideB, double sideC) {
+        this.sideA = sideA;
+        this.sideB = sideB;
+        this.sideC = sideC;
     }
 
     public double calculateSquare() {
-        double p = (a + b + c) / 2;
-
-        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+        double p = (sideA + sideB + sideC) / 2;
+        return Math.sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
     }
 }
