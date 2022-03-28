@@ -1,23 +1,27 @@
 package ua.hillel.task8.participants;
 
-import ua.hillel.task8.obstacles.*;
+import ua.hillel.task8.obstacles.Obstacle;
 
 public abstract class Participant {
     private String name;
+
+    public String getName() {
+        return name;
+    }
 
     public Participant(String name) {
         this.name = name;
     }
 
+    public abstract double findRunLimit();
+
+    public abstract double findJumpLimit();
+
     public void run() {
-        System.out.printf("%s has run the track...%n", name);
+        System.out.println(name + " бежит");
     }
 
     public void jump() {
-        System.out.printf("%s has jumped over the wall...%n", name);
-    }
-
-    public void overcome(Obstacle obstacle) {
-        // TODO
+        System.out.println(name + " прыгает");
     }
 }

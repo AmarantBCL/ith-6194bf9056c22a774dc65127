@@ -1,5 +1,7 @@
 package ua.hillel.task8.obstacles;
 
-public abstract class Obstacle {
+import ua.hillel.task8.participants.Participant;
 
+public interface Obstacle {
+    boolean overcome(Participant participant);
 }

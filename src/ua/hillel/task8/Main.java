@@ -9,7 +9,7 @@ public class Main {
         Obstacle[] obstacles = getObstacles();
         for (Participant participant : participants) {
             for (Obstacle obstacle : obstacles) {
-                participant.overcome(obstacle);
+                if (!obstacle.overcome(participant)) break;
             }
         }
     }
@@ -20,6 +20,7 @@ public class Main {
     }
 
     private static Obstacle[] getObstacles() {
-        return new Obstacle[]{new Track(), new Wall()};
+        return new Obstacle[]{new Track(100),
+                new Wall(1.1)};
     }
 }
