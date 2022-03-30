@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class WordGame {
-    private final static String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado",
+    private static final String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado",
             "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango",
             "mushroom", "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin",
             "potato"};
