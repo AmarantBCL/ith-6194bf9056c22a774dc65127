@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class WordGame {
-    private static final String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado",
+    private static final String[] WORDS = {"apple", "orange", "lemon", "banana", "apricot", "avocado",
             "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango",
             "mushroom", "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin",
             "potato"};
@@ -16,7 +16,7 @@ public class WordGame {
 
     public WordGame() {
         Random random = new Random();
-        this.word = words[random.nextInt(words.length)];
+        this.word = WORDS[random.nextInt(WORDS.length)];
         generateMaskedAnswer();
     }
 
