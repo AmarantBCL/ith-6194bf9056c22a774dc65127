@@ -3,7 +3,7 @@ package ua.hillel.task8.obstacles;
 import ua.hillel.task8.participants.Participant;
 
 public class Wall implements Obstacle {
-    private double height;
+    private final double height;
 
     public Wall(double height) {
         this.height = height;
@@ -11,14 +11,15 @@ public class Wall implements Obstacle {
 
     @Override
     public boolean overcome(Participant participant) {
-        if (participant.findJumpLimit() > height) {
+        double jumpLimit = participant.getJumpLimit();
+        if (jumpLimit >= height) {
             participant.jump();
-            System.out.printf("Участник[%s] прошёл препятствие[%s] на дистанции[%s]%n",
-                    participant.getName(), "Wall", height);
+            System.out.printf("Участник[%s] прошёл препятствие[Wall] на дистанции[%s]%n",
+                    participant.getName(), height);
             return true;
         }
-        System.out.printf("Участник[%s] не прошел препятствие[%s] на дистанции[%s]. " +
-                "Пройдено[%s]%n", participant.getName(), "Wall", height, "?");
+        System.out.printf("Участник[%s] не прошёл препятствие[Wall] на дистанции[%s]. " +
+                "Может пройти[%s]%n", participant.getName(), height, jumpLimit);
         return false;
     }
 }
