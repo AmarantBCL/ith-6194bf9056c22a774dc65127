@@ -25,4 +25,3 @@ hs_err_pid*
 # My ignored files & directories
 /.idea
 /out
-*.iml
