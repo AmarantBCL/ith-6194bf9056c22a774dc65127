@@ -1,7 +1,7 @@
 package ua.hillel.task9;
 
 public class StringUtil {
-    public static int findSymbolOccurance(String str, char symbol) {
+    public static int findSymbolOccurrence(String str, char symbol) {
         char[] chars = str.toCharArray();
         int times = 0;
         for (char c : chars) {
