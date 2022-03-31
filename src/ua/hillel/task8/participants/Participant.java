@@ -23,11 +23,7 @@ public abstract class Participant {
         return jumpLimit;
     }
 
-    public void run() {
-        System.out.printf("Участник[%s] бежит%n", name);
-    }
+    public abstract void run();
 
-    public void jump() {
-        System.out.printf("Участник[%s] прыгает%n", name);
-    }
+    public abstract void jump();
 }

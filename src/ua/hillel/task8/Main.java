@@ -17,9 +17,9 @@ public class Main {
     }
 
     private static Participant[] getParticipants() {
-        return new Participant[]{new Human("Human", 1000, 1),
-                new Cat("Cat", 300, 1.5),
-                new Robot("Robot", 5000, 0.5)};
+        return new Participant[]{new Human("Valera", 1000, 1),
+                new Cat("Barsik", 300, 1.5),
+                new Robot("Bayraktar", 5000, 0.5)};
     }
 
     private static Obstacle[] getObstacles() {
@@ -28,7 +28,8 @@ public class Main {
                 new Track(200),
                 new Wall(0.8),
                 new Track(500),
-                new Wall(1.1),
-                new Track(1000),};
+                new Track(1000),
+                new Wall(1.1)
+        };
     }
 }
