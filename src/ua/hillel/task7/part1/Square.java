@@ -8,6 +8,6 @@ public class Square implements Shape {
     }
 
     public double calculateSquare() {
-        return side * side;
+        return Math.pow(side, 2);
     }
 }

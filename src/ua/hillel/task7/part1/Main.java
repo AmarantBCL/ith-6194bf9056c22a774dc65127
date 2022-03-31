@@ -7,8 +7,10 @@ public class Main {
     }
 
     private static Shape[] getShapes() {
-        return new Shape[]{new Circle(10), new Triangle(3, 4, 5),
-                new Square(2)};
+        return new Shape[]{new Circle(10),
+                new Triangle(3, 4, 5),
+                new Square(2)
+        };
     }
 
     private static double sumSquare(Shape[] shapes) {
