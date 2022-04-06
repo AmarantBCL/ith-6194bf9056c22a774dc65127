@@ -1,5 +1,6 @@
-package ua.hillel.task10;
+package ua.hillel.task10.input;
 
+import ua.hillel.task10.coordinates.Coordinate;
 import java.util.Random;
 
 public class RandomCoordinateScanner implements CoordinateScanner {

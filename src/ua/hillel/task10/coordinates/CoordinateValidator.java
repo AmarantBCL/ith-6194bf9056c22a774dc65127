@@ -1,4 +1,4 @@
-package ua.hillel.task10;
+package ua.hillel.task10.coordinates;
 
 public class CoordinateValidator {
     private final int minRange;

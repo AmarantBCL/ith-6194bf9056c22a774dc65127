@@ -1,4 +1,4 @@
-package ua.hillel.task10;
+package ua.hillel.task10.coordinates;
 
 public class Coordinate {
     private final int h;

@@ -1,7 +1,7 @@
-package ua.hillel.task10;
+package ua.hillel.task10.field;
 
 public class Field {
-    private static final char EMPTY_SYMBOL = '-';
+    public static final char EMPTY_SYMBOL = '-';
 
     private final char[][] data = {
             {EMPTY_SYMBOL, EMPTY_SYMBOL, EMPTY_SYMBOL},
@@ -11,6 +11,10 @@ public class Field {
 
     public char[][] getData() {
         return data;
+    }
+
+    public char getValue(int h, int v) {
+        return data[h][v];
     }
 
     public void setValue(int h, int v, char ch) {
