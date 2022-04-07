@@ -1,7 +1,9 @@
 package ua.hillel.task10.checking;
 
 import ua.hillel.task10.coordinates.Coordinate;
+import ua.hillel.task10.coordinates.CoordinateValidator;
 import ua.hillel.task10.field.Field;
+import ua.hillel.task10.input.StdoutCoordinateScanner;
 
 public class CoordinateChecker {
     public boolean notFree(Coordinate coordinate, Field field) {

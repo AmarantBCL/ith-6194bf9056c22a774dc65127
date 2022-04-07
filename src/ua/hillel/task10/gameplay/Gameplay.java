@@ -1,14 +1,10 @@
 package ua.hillel.task10.gameplay;
 
-import ua.hillel.task10.checking.CoordinateChecker;
 import ua.hillel.task10.checking.DrawChecker;
 import ua.hillel.task10.checking.WinChecker;
-import ua.hillel.task10.coordinates.Coordinate;
-import ua.hillel.task10.coordinates.CoordinateValidator;
 import ua.hillel.task10.field.Field;
 import ua.hillel.task10.field.FieldDrawer;
-import ua.hillel.task10.input.RandomCoordinateScanner;
-import ua.hillel.task10.input.StdoutCoordinateScanner;
+import ua.hillel.task10.turn.Turner;
 
 public class Gameplay {
     private final Field field;
@@ -22,28 +18,8 @@ public class Gameplay {
         fieldDrawer.draw(field);
     }
 
-    public void humanTurn() {
-        CoordinateValidator validator = new CoordinateValidator(0, 2);
-        CoordinateChecker coordinateChecker = new CoordinateChecker();
-        Coordinate coordinate;
-        do {
-            coordinate = new StdoutCoordinateScanner().scan();
-        } while (validator.notValid(coordinate) ||
-                coordinateChecker.notFree(coordinate, field));
-        field.setValue(coordinate.getH(), coordinate.getV(), 'X');
-        fieldDrawer.draw(field);
-    }
-
-    public void aiTurn() {
-        CoordinateValidator validator = new CoordinateValidator(0, 2);
-        RandomCoordinateScanner randomCoordinateScanner = new RandomCoordinateScanner();
-        CoordinateChecker coordinateChecker = new CoordinateChecker();
-        Coordinate randomCoordinate;
-        do {
-            randomCoordinate = randomCoordinateScanner.scan();
-        } while (validator.notValid(randomCoordinate) ||
-                coordinateChecker.notFree(randomCoordinate, field));
-        field.setValue(randomCoordinate.getH(), randomCoordinate.getV(), 'O');
+    public void turn(Turner turner) {
+        turner.go(field);
         fieldDrawer.draw(field);
     }
 
@@ -53,7 +29,7 @@ public class Gameplay {
         String winner = winChecker.check();
         if (winner != null || drawChecker.check()) {
             inProgress = false;
-            new Announcer().show(winner);
+            show(winner);
             return true;
         }
         return false;
@@ -61,5 +37,13 @@ public class Gameplay {
 
     public boolean notFinished() {
         return inProgress;
+    }
+
+    private void show(String winner) {
+        if (winner != null) {
+            System.out.println("The winner is '" + winner + "'!");
+        } else {
+            System.err.println("DRAW!");
+        }
     }
 }

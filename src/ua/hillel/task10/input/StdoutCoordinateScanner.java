@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class StdoutCoordinateScanner implements CoordinateScanner {
     private final Scanner scanner = new Scanner(System.in);
 
+    @Override
     public Coordinate scan() {
         String[] coordinates;
         do {
