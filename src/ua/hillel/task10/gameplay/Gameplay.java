@@ -4,7 +4,7 @@ import ua.hillel.task10.checking.DrawChecker;
 import ua.hillel.task10.checking.WinChecker;
 import ua.hillel.task10.field.Field;
 import ua.hillel.task10.field.FieldDrawer;
-import ua.hillel.task10.turn.Turner;
+import ua.hillel.task10.turn.PlayerTurn;
 
 public class Gameplay {
     private final Field field;
@@ -18,18 +18,17 @@ public class Gameplay {
         fieldDrawer.draw(field);
     }
 
-    public void turn(Turner turner) {
-        turner.go(field);
+    public void turn(PlayerTurn playerTurn) {
+        playerTurn.go(field);
         fieldDrawer.draw(field);
     }
 
     public boolean checkWinDraw() {
         WinChecker winChecker = new WinChecker(field);
         DrawChecker drawChecker = new DrawChecker(field);
-        String winner = winChecker.check();
-        if (winner != null || drawChecker.check()) {
+        if (winChecker.check() || drawChecker.check()) {
             inProgress = false;
-            show(winner);
+            show(winChecker.getWinner());
             return true;
         }
         return false;
@@ -39,11 +38,15 @@ public class Gameplay {
         return inProgress;
     }
 
+    public boolean again() {
+        return new RematchScanner().ask();
+    }
+
     private void show(String winner) {
         if (winner != null) {
             System.out.println("The winner is '" + winner + "'!");
         } else {
-            System.err.println("DRAW!");
+            System.out.println("DRAW!");
         }
     }
 }

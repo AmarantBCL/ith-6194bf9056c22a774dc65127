@@ -2,15 +2,20 @@ package ua.hillel.task10.checking;
 
 import ua.hillel.task10.field.Field;
 
-public class WinChecker {
+public class WinChecker implements Checker {
     private static final char[] SYMBOLS = new char[]{'O', 'X'};
-    private Field field;
+    private final Field field;
+    private String winner;
+
+    public String getWinner() {
+        return winner;
+    }
 
     public WinChecker(Field field) {
         this.field = field;
     }
 
-    public String check() {
+    public boolean check() {
         char[][] data = field.getData();
         for (char symbol : SYMBOLS) {
             for (int i = 0; i < data.length; i++) {
@@ -21,14 +26,16 @@ public class WinChecker {
                     verticalMatches += countLineMatches(j, i, symbol);
                 }
                 if (isLineMatch(horizontalMatches, verticalMatches)) {
-                    return String.valueOf(symbol);
+                    winner = String.valueOf(symbol);
+                    return true;
                 }
             }
             if (isDiagonalMatch(symbol)) {
-                return String.valueOf(symbol);
+                winner = String.valueOf(symbol);
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     private int countLineMatches(int h, int v, char symbol) {

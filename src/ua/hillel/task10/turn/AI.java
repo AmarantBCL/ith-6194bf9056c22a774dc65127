@@ -6,7 +6,7 @@ import ua.hillel.task10.coordinates.CoordinateValidator;
 import ua.hillel.task10.field.Field;
 import ua.hillel.task10.input.RandomCoordinateScanner;
 
-public class AI implements Turner {
+public class AI implements PlayerTurn {
     @Override
     public void go(Field field) {
         CoordinateValidator validator = new CoordinateValidator(0, 2);
