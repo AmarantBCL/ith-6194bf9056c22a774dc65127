@@ -1,4 +1,4 @@
-package ua.hillel.task10.checking;
+package ua.hillel.task10;
 
 public interface Checker {
     boolean check();

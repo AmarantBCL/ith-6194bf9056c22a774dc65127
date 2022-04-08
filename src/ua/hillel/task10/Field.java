@@ -1,4 +1,4 @@
-package ua.hillel.task10.field;
+package ua.hillel.task10;
 
 public class Field {
     public static final char EMPTY_SYMBOL = '-';

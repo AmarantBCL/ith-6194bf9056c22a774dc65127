@@ -1,10 +1,4 @@
-package ua.hillel.task10.gameplay;
-
-import ua.hillel.task10.checking.DrawChecker;
-import ua.hillel.task10.checking.WinChecker;
-import ua.hillel.task10.field.Field;
-import ua.hillel.task10.field.FieldDrawer;
-import ua.hillel.task10.turn.PlayerTurn;
+package ua.hillel.task10;
 
 public class Gameplay {
     private final Field field;

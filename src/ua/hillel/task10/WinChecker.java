@@ -1,6 +1,4 @@
-package ua.hillel.task10.checking;
-
-import ua.hillel.task10.field.Field;
+package ua.hillel.task10;
 
 public class WinChecker implements Checker {
     private static final char[] SYMBOLS = new char[]{'O', 'X'};

@@ -1,4 +1,4 @@
-package ua.hillel.task10.gameplay;
+package ua.hillel.task10;
 
 import java.util.Scanner;
 

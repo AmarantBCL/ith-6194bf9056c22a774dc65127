@@ -1,10 +1,4 @@
-package ua.hillel.task10.turn;
-
-import ua.hillel.task10.checking.CoordinateChecker;
-import ua.hillel.task10.coordinates.Coordinate;
-import ua.hillel.task10.coordinates.CoordinateValidator;
-import ua.hillel.task10.field.Field;
-import ua.hillel.task10.input.RandomCoordinateScanner;
+package ua.hillel.task10;
 
 public class AI implements PlayerTurn {
     @Override

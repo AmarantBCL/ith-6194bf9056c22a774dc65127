@@ -1,4 +1,4 @@
-package ua.hillel.task10.field;
+package ua.hillel.task10;
 
 public class FieldDrawer {
     public void draw(Field field) {
