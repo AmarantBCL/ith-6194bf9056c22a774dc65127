@@ -29,6 +29,8 @@ public class ListUtils {
         for (Integer i : list) {
             if (!uniqueList.contains(i)) {
                 uniqueList.add(i);
+            } else {
+                uniqueList.remove(i);
             }
         }
         return uniqueList;
