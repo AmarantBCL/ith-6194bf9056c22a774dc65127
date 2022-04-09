@@ -24,10 +24,10 @@ public class Gameplay {
         fieldDrawer.draw(field);
     }
 
-    public boolean check(Checker checker) {
+    public boolean checkWinDraw(Checker checker) {
         if (checker.check()) {
             inProgress = false;
-            show(checker.getWinner());
+            showWinner(checker.getWinner());
             return true;
         }
         return false;
@@ -37,7 +37,7 @@ public class Gameplay {
         return inProgress;
     }
 
-    public boolean again() {
+    public boolean playAgain() {
         return new RematchScanner().ask();
     }
 
@@ -45,7 +45,7 @@ public class Gameplay {
         symbol = symbol == 'O' || symbol == '\u0000' ? 'X' : 'O';
     }
 
-    private void show(String winner) {
+    private void showWinner(String winner) {
         if (winner != null) {
             System.out.println("The winner is '" + winner + "'!");
         } else {

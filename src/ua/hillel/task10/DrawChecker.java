@@ -7,6 +7,12 @@ public class DrawChecker implements Checker {
         this.field = field;
     }
 
+    @Override
+    public String getWinner() {
+        return null;
+    }
+
+    @Override
     public boolean check() {
         char[][] data = field.getData();
         int count = 0;
@@ -18,9 +24,5 @@ public class DrawChecker implements Checker {
             }
         }
         return count <= 0;
-    }
-
-    public String getWinner() {
-        return null;
     }
 }

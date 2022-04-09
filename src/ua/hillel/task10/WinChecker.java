@@ -9,10 +9,12 @@ public class WinChecker implements Checker {
         this.field = field;
     }
 
+    @Override
     public String getWinner() {
         return winner;
     }
 
+    @Override
     public boolean check() {
         char[][] data = field.getData();
         for (char symbol : SYMBOLS) {
@@ -45,7 +47,7 @@ public class WinChecker implements Checker {
     }
 
     private boolean isDiagonalMatch(char symbol) {
-        return  ((field.getValue(0, 0) == symbol && field.getValue(1, 1) == symbol &&
+        return ((field.getValue(0, 0) == symbol && field.getValue(1, 1) == symbol &&
                 field.getValue(2, 2) == symbol) || (field.getValue(0, 2) == symbol &&
                 field.getValue(1, 1) == symbol && field.getValue(2, 0) == symbol));
     }

@@ -15,8 +15,8 @@ public class Main {
             do {
                 for (CoordinateScanner scanner : SCANNERS) {
                     gameplay.turn(scanner);
-                    if (gameplay.check(winChecker) || gameplay.check(drawChecker)) {
-                        playing = gameplay.again();
+                    if (gameplay.checkWinDraw(winChecker) || gameplay.checkWinDraw(drawChecker)) {
+                        playing = gameplay.playAgain();
                         break;
                     }
                 }
