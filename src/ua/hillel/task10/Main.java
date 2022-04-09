@@ -1,16 +1,21 @@
 package ua.hillel.task10;
 
 public class Main {
-    private static final PlayerTurn[] PLAYERS = {new Human(), new AI()};
+    private static final CoordinateScanner[] SCANNERS = {
+            new StdoutCoordinateScanner(), new RandomCoordinateScanner()
+    };
 
     public static void main(String[] args) {
         boolean playing = true;
         while (playing) {
-            Gameplay gameplay = new Gameplay();
+            Field field = new Field();
+            Gameplay gameplay = new Gameplay(field);
+            WinChecker winChecker = new WinChecker(field);
+            DrawChecker drawChecker = new DrawChecker(field);
             do {
-                for (PlayerTurn playerTurn : PLAYERS) {
-                    gameplay.turn(playerTurn);
-                    if (gameplay.checkWinDraw()) {
+                for (CoordinateScanner scanner : SCANNERS) {
+                    gameplay.turn(scanner);
+                    if (gameplay.check(winChecker) || gameplay.check(drawChecker)) {
                         playing = gameplay.again();
                         break;
                     }

@@ -4,25 +4,30 @@ public class Gameplay {
     private final Field field;
     private final FieldDrawer fieldDrawer;
     private boolean inProgress;
+    private char symbol;
 
-    public Gameplay() {
+    public Gameplay(Field field) {
         inProgress = true;
-        this.field = new Field();
+        this.field = field;
         this.fieldDrawer = new FieldDrawer();
         fieldDrawer.draw(field);
     }
 
-    public void turn(PlayerTurn playerTurn) {
-        playerTurn.go(field);
+    public void turn(CoordinateScanner scanner) {
+        CoordinateChecker coordinateChecker = new CoordinateChecker();
+        Coordinate coordinate;
+        setTurnSymbol();
+        do {
+            coordinate = scanner.scan();
+        } while (!coordinateChecker.check(coordinate, field));
+        field.setValue(coordinate.getH(), coordinate.getV(), symbol);
         fieldDrawer.draw(field);
     }
 
-    public boolean checkWinDraw() {
-        WinChecker winChecker = new WinChecker(field);
-        DrawChecker drawChecker = new DrawChecker(field);
-        if (winChecker.check() || drawChecker.check()) {
+    public boolean check(Checker checker) {
+        if (checker.check()) {
             inProgress = false;
-            show(winChecker.getWinner());
+            show(checker.getWinner());
             return true;
         }
         return false;
@@ -34,6 +39,10 @@ public class Gameplay {
 
     public boolean again() {
         return new RematchScanner().ask();
+    }
+
+    private void setTurnSymbol() {
+        symbol = symbol == 'O' || symbol == '\u0000' ? 'X' : 'O';
     }
 
     private void show(String winner) {

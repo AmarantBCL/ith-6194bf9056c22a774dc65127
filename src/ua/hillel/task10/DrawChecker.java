@@ -19,4 +19,8 @@ public class DrawChecker implements Checker {
         }
         return count <= 0;
     }
+
+    public String getWinner() {
+        return null;
+    }
 }

@@ -14,8 +14,4 @@ public class CoordinateValidator {
         return (coordinate.getH() >= minRange && coordinate.getH() <= maxRange)
                 && (coordinate.getV() >= minRange && coordinate.getV() <= maxRange);
     }
-
-    public boolean notValid(Coordinate coordinate) {
-        return !valid(coordinate);
-    }
 }

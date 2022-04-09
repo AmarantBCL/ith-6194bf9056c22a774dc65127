@@ -5,12 +5,12 @@ public class WinChecker implements Checker {
     private final Field field;
     private String winner;
 
-    public String getWinner() {
-        return winner;
-    }
-
     public WinChecker(Field field) {
         this.field = field;
+    }
+
+    public String getWinner() {
+        return winner;
     }
 
     public boolean check() {
