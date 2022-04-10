@@ -19,7 +19,7 @@ public class Gameplay {
         setTurnSymbol();
         do {
             coordinate = scanner.scan();
-        } while (!coordinateChecker.check(coordinate, field));
+        } while (coordinateChecker.notValid(coordinate, field));
         field.setValue(coordinate.getH(), coordinate.getV(), symbol);
         fieldDrawer.draw(field);
     }
