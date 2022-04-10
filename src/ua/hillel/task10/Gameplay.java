@@ -14,12 +14,13 @@ public class Gameplay {
     }
 
     public void turn(CoordinateScanner scanner) {
+        CoordinateValidator validator = new CoordinateValidator(0, 2);
         CoordinateChecker coordinateChecker = new CoordinateChecker();
         Coordinate coordinate;
-        setTurnSymbol();
         do {
             coordinate = scanner.scan();
-        } while (coordinateChecker.notValid(coordinate, field));
+        } while (!validator.valid(coordinate) || !coordinateChecker.isFree(coordinate, field));
+        setTurnSymbol();
         field.setValue(coordinate.getH(), coordinate.getV(), symbol);
         fieldDrawer.draw(field);
     }
