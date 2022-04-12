@@ -1,6 +1,8 @@
 package ua.hillel.task13;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Random;
 
 public class LinkedListUtils {
     public static void addFirst(LinkedList<String> list, String str) {
