@@ -15,7 +15,7 @@ public class Main {
         System.out.println(ListUtils.toList(new int[]{1, 2, 3}));
 
         List<Integer> intList = Arrays.asList(1, 8, 5, 7, 9, 1, 2, 4, 5, 2, 2, 6, 3, 0, 0);
-        System.out.println(ListUtils.findUnique(intList)); // = 8, 7, 9, 4, 6, 3
+        System.out.println(ListUtils.findUnique(intList));
 
         ListUtils.calcOccurrence(wordList);
 
@@ -32,12 +32,12 @@ public class Main {
         directory.add(new Record("Anastasia Begova", "6666666666"));
         directory.add(new Record("Viktoria Nesterenko", "7777777777"));
 
-        Record record = directory.find("Alisa Muravyova");
-        System.out.println(record);
+        Record singleRecord = directory.find("Alisa Muravyova");
+        System.out.println(singleRecord);
 
         List<Record> recordList = directory.findAll("Viktor Kotenko");
-        for (Record rec : recordList) {
-            System.out.println(rec);
+        for (Record record : recordList) {
+            System.out.println(record);
         }
     }
 }

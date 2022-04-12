@@ -23,42 +23,38 @@ public class ListUtils {
     }
 
     public static List<Integer> findUnique(List<Integer> list) {
-        List<Integer> uniqueList = new ArrayList<>();
-        List<Integer> duplicates = new ArrayList<>();
+        List<Integer> resultList = new ArrayList<>();
         for (Integer i : list) {
-            if (!uniqueList.contains(i)) {
-                uniqueList.add(i);
-            } else {
-                duplicates.add(i);
+            if (!resultList.contains(i)) {
+                resultList.add(i);
             }
         }
-        for (Integer duplicate : duplicates) {
-            if (uniqueList.contains(duplicate)) {
-                uniqueList.remove(duplicate);
-            }
-        }
-        return uniqueList;
+        return resultList;
     }
 
     public static void calcOccurrence(List<String> list) {
-        List<String> tempList = new ArrayList<>();
-        for (String animal : list) {
-            if (!tempList.contains(animal)) {
-                System.out.printf("%s: %d%n", animal, countOccurrence(list, animal));
-                tempList.add(animal);
-            }
+        List<String> tempList = removeStringDuplicates(list);
+        for (String animal : tempList) {
+            System.out.printf("%s: %d%n", animal, countOccurrence(list, animal));
         }
     }
 
     public static List<String> findOccurrence(List<String> list) {
-        List<String> tempList = new ArrayList<>();
+        List<String> tempList = removeStringDuplicates(list);
         List<String> resultList = new ArrayList<>();
-        for (String animal : list) {
-            if (!tempList.contains(animal)) {
-                String str = String.format("{name: \"%s\", occurrence: %d}",
-                        animal, countOccurrence(list, animal));
+        for (String animal : tempList) {
+            String str = String.format("{name: \"%s\", occurrence: %d}",
+                    animal, countOccurrence(list, animal));
+            resultList.add(str);
+        }
+        return resultList;
+    }
+
+    private static List<String> removeStringDuplicates(List<String> list) {
+        List<String> resultList = new ArrayList<>();
+        for (String str : list) {
+            if (!resultList.contains(str)) {
                 resultList.add(str);
-                tempList.add(animal);
             }
         }
         return resultList;
