@@ -3,10 +3,13 @@ package ua.hillel.task13.coffee.order;
 import java.util.LinkedList;
 
 public class CoffeeOrderBoard {
+    private static int totalOrders;
     private LinkedList<Order> list = new LinkedList<>();
 
-    public void add(Order order) {
+    public void add(String name) {
+        Order order = new Order(name, totalOrders);
         list.addLast(order);
+        totalOrders++;
     }
 
     public Order deliver() {

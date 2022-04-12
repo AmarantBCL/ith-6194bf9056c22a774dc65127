@@ -1,7 +1,6 @@
 package ua.hillel.task13.coffee.order;
 
 public class Order {
-    private static int totalOrders;
     private String name;
     private int id;
 
@@ -13,10 +12,9 @@ public class Order {
         return id;
     }
 
-    public Order(String name) {
+    public Order(String name, int id) {
         this.name = name;
-        this.id = totalOrders;
-        totalOrders++;
+        this.id = id;
     }
 
     @Override
