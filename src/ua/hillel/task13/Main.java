@@ -1,7 +1,6 @@
 package ua.hillel.task13;
 
 import ua.hillel.task13.coffee.order.CoffeeOrderBoard;
-import ua.hillel.task13.coffee.order.Order;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -40,18 +39,18 @@ public class Main {
         board.add("Alyona");
         board.add("Kostya");
         board.draw();
-        board.deliver();
+        System.out.println(board.deliver());
         board.draw();
-        board.deliver(2);
+        System.out.println(board.deliver(2));
         board.draw();
         board.add("Vika");
         board.add("Petya");
         board.draw();
-        board.deliver();
+        System.out.println(board.deliver());
         board.draw();
-        board.deliver(4);
+        System.out.println(board.deliver(4));
         board.draw();
-        board.deliver();
+        System.out.println(board.deliver());
         board.draw();
     }
 }

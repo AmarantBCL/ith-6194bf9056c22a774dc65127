@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class CoffeeOrderBoard {
     private static int totalOrders;
-    private LinkedList<Order> list = new LinkedList<>();
+    private final LinkedList<Order> list = new LinkedList<>();
 
     public void add(String name) {
         Order order = new Order(name, totalOrders);
@@ -32,5 +32,6 @@ public class CoffeeOrderBoard {
         for (Order order : list) {
             System.out.printf("%-4d|%12s%n", order.getId(), order.getName());
         }
+        System.out.println();
     }
 }

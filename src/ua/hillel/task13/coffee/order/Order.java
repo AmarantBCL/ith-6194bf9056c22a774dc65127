@@ -1,8 +1,8 @@
 package ua.hillel.task13.coffee.order;
 
 public class Order {
-    private String name;
-    private int id;
+    private final String name;
+    private final int id;
 
     public String getName() {
         return name;
