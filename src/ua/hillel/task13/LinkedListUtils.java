@@ -14,14 +14,13 @@ public class LinkedListUtils {
     }
 
     public static LinkedList<Integer> join(LinkedList<Integer> list1, LinkedList<Integer> list2) {
-        LinkedList<Integer> list = new LinkedList<>();
-        list.addAll(list1);
+        LinkedList<Integer> list = new LinkedList<>(list1);
         list.addAll(list2);
         return list;
     }
 
     public static void shuffle(LinkedList<String> list) {
-        Object[] array = list.toArray();
+        String[] array = list.toArray(new String[0]);
         arrayShuffle(array);
         iterateOver(array, list);
     }
@@ -36,19 +35,19 @@ public class LinkedListUtils {
         return resultList;
     }
 
-    private static void iterateOver(Object[] arr, LinkedList<String> list) {
+    private static void iterateOver(String[] arr, LinkedList<String> list) {
         ListIterator<String> it = list.listIterator();
-        for (Object object : arr) {
+        for (String str : arr) {
             it.next();
-            it.set((String) object);
+            it.set(str);
         }
     }
 
-    private static void arrayShuffle(Object[] arr) {
+    private static void arrayShuffle(String[] arr) {
         Random rand = new Random();
         for (int i = 0; i < arr.length; i++) {
             int index = rand.nextInt(i + 1);
-            Object object = arr[index];
+            String object = arr[index];
             arr[index] = arr[i];
             arr[i] = object;
         }

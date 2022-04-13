@@ -3,7 +3,7 @@ package ua.hillel.task13.coffee.order;
 import java.util.LinkedList;
 
 public class CoffeeOrderBoard {
-    private static int totalOrders;
+    private int totalOrders;
     private final LinkedList<Order> list = new LinkedList<>();
 
     public void add(String name) {
