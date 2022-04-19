@@ -1,40 +1,55 @@
 package ua.hillel.task14;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class FileNavigator {
-    private final HashMap<String, List<FileData>> files = new HashMap<>();
+    private final HashMap<String, List<FileData>> allFiles = new HashMap<>();
 
-    public HashMap<String, List<FileData>> getFiles() {
-        return files;
+    public HashMap<String, List<FileData>> getAllFiles() {
+        return allFiles;
     }
 
     public void add(FileData file, String path) {
-        List<FileData> list = files.containsKey(path) ? files.get(path) : new ArrayList<>();
+        List<FileData> files = allFiles.containsKey(path) ? allFiles.get(path) : new ArrayList<>();
         file.changePath(path);
-        list.add(file);
-        files.put(path, list);
+        files.add(file);
+        allFiles.put(path, files);
     }
 
     public List<FileData> find(String path) {
-        return files.get(path);
+        return allFiles.get(path);
     }
 
-    public List<FileData> filterBySize(String path, long size) {
-        List<FileData> list = new ArrayList<>(find(path));
-        for (FileData file : list) {
-            if (file.getSize() > size) {
-                list.remove(file);
+    public List<FileData> filterBySize(long size) {
+        List<FileData> filesBySize = new ArrayList<>();
+        for (List<FileData> files : allFiles.values()) {
+            for (FileData file : files) {
+                if (file.getSize() <= size) {
+                    filesBySize.add(file);
+                }
             }
         }
-        return list;
+        return filesBySize;
     }
 
     public void remove(String path) {
-        List<FileData> list = find(path);
-        files.remove(path);
+        allFiles.remove(path);
+    }
+
+    public List<FileData> sortBySize() {
+        List<FileData> files = new ArrayList<>();
+        for (List<FileData> fileList : allFiles.values()) {
+            files.addAll(fileList);
+        }
+        files.sort(new Comparator<FileData>() {
+            @Override
+            public int compare(FileData o1, FileData o2) {
+                return (int) (o1.getSize() - o2.getSize());
+            }
+        });
+        return files;
     }
 }

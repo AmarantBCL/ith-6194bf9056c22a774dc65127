@@ -1,33 +1,49 @@
 package ua.hillel.task14;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         FileNavigator navigator = new FileNavigator();
-        HashMap<String, List<FileData>> map = navigator.getFiles();
-        FileData file = new FileData("video.mp3", 56L, "D:/Videos");
-        System.out.println(file);
-        System.out.println(map);
-        navigator.add(file, "D:/Storage");
-        System.out.println(file);
-        System.out.println(map);
-        FileData file2 = new FileData("firstApp.java", 1L, "D:/Apps");
-        System.out.println(file2);
-        navigator.add(file2, "D:/Storage");
-        System.out.println(map);
-        FileData file3 = new FileData("love.jpg", 5L, "D:/Images/Photos");
-        System.out.println(navigator.find("D:/Storage"));
+        HashMap<String, List<FileData>> allFiles = navigator.getAllFiles();
+        FileData file1 = new FileData("movie.avi", 50L, "/Videos");
+        FileData file2 = new FileData("app.java", 1L, "/Apps");
+        FileData file3 = new FileData("song.mp3", 10L, "/Music");
+        FileData file4 = new FileData("family.jpg", 5L, "/Images/Photos");
 
-        System.out.println(file3);
-        navigator.add(file3, "D:/Storage/Images");
-        System.out.println(map);
-        System.out.println(navigator.find("D:/Storage/Images"));
+        System.out.println("***** add *****");
+        navigator.add(file1, "/Storage");
+        navigator.add(file2, "/Programs");
+        navigator.add(file3, "/Storage");
+        navigator.add(file4, "/Storage");
+        System.out.println(allFiles);
 
-        System.out.println(navigator.filterBySize("D:/Storage", 1L));
+        System.out.println("***** find *****");
+        System.out.println(navigator.find("/Programs"));
 
-        navigator.remove("D:/Storage");
-        System.out.println(map);
+        System.out.println("***** filterBySize *****");
+        System.out.println(navigator.filterBySize(5));
+
+        System.out.println("***** remove *****");
+        navigator.remove("/Programs");
+        System.out.println(navigator.find("/Programs"));
+
+        System.out.println("***** sortBySize *****");
+        List<FileData> sortedFiles = navigator.sortBySize();
+        System.out.println(sortedFiles);
+
+        List<String> testStrings = new ArrayList<>(Arrays.asList(
+                "Привет", "Мир", "Привет", "!"));
+        System.out.println(SetUtils.convertToUnique(testStrings));
+
+        List<Integer> testNumbers = new ArrayList<>(Arrays.asList(
+                1, 2, 6, 8, 2, 9, 3, 3, 8, 5, 1, 4, 7
+        ));
+        System.out.println(SetUtils.getSortedUniqueIntegersASC(testNumbers));
+        System.out.println(SetUtils.getSortedUniqueIntegersDESC(testNumbers));
+
+        List<String> moreStrings = new ArrayList<>(Arrays.asList(
+                "Привет", "Мир", "Привет", "!", "!"));
+        System.out.println(SetUtils.buildSentenceDirection(moreStrings));
     }
 }
