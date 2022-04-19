@@ -9,13 +9,13 @@ public class FileData {
         return size;
     }
 
+    public String getPath() {
+        return path;
+    }
+
     public FileData(String name, long size, String path) {
         this.name = name;
         this.size = size;
-        this.path = path;
-    }
-
-    public void changePath(String path) {
         this.path = path;
     }
 

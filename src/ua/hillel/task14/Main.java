@@ -6,16 +6,18 @@ public class Main {
     public static void main(String[] args) {
         FileNavigator navigator = new FileNavigator();
         HashMap<String, List<FileData>> allFiles = navigator.getAllFiles();
-        FileData file1 = new FileData("movie.avi", 50L, "/Videos");
-        FileData file2 = new FileData("app.java", 1L, "/Apps");
-        FileData file3 = new FileData("song.mp3", 10L, "/Music");
-        FileData file4 = new FileData("family.jpg", 5L, "/Images/Photos");
+        FileData file1 = new FileData("movie.avi", 50L, "/Storage");
+        FileData file2 = new FileData("app.java", 1L, "/Programs");
+        FileData file3 = new FileData("song.mp3", 10L, "/Storage");
+        FileData file4 = new FileData("family.jpg", 5L, "/Storage");
+        FileData file5 = new FileData("corrupted.bad", 2L, "/Garbage");
 
         System.out.println("***** add *****");
         navigator.add(file1, "/Storage");
         navigator.add(file2, "/Programs");
         navigator.add(file3, "/Storage");
         navigator.add(file4, "/Storage");
+        navigator.add(file5, "/Storage");
         System.out.println(allFiles);
 
         System.out.println("***** find *****");

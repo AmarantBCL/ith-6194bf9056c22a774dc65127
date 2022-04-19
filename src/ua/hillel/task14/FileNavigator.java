@@ -13,10 +13,13 @@ public class FileNavigator {
     }
 
     public void add(FileData file, String path) {
-        List<FileData> files = allFiles.containsKey(path) ? allFiles.get(path) : new ArrayList<>();
-        file.changePath(path);
-        files.add(file);
-        allFiles.put(path, files);
+        if (file.getPath().equals(path)) {
+            List<FileData> files = allFiles.containsKey(path) ? allFiles.get(path) : new ArrayList<>();
+            files.add(file);
+            allFiles.put(path, files);
+        } else {
+            System.out.printf("File path mismatch!%nPath: %s%nFileData: %s%n", file.getPath(), file);
+        }
     }
 
     public List<FileData> find(String path) {
