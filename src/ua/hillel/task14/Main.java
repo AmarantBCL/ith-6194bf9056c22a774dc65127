@@ -1,16 +1,20 @@
 package ua.hillel.task14;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        // Task #1 tests
         FileNavigator navigator = new FileNavigator();
         HashMap<String, List<FileData>> allFiles = navigator.getAllFiles();
-        FileData file1 = new FileData("movie.avi", 50L, "/Storage");
-        FileData file2 = new FileData("app.java", 1L, "/Programs");
-        FileData file3 = new FileData("song.mp3", 10L, "/Storage");
-        FileData file4 = new FileData("family.jpg", 5L, "/Storage");
-        FileData file5 = new FileData("corrupted.bad", 2L, "/Garbage");
+        FileData file1 = new FileData("movie.avi", 50, "/Storage");
+        FileData file2 = new FileData("app.java", 1, "/Programs");
+        FileData file3 = new FileData("song.mp3", 10, "/Storage");
+        FileData file4 = new FileData("family.jpg", 5, "/Storage");
+        FileData file5 = new FileData("corrupted.bad", 2, "/Garbage");
 
         System.out.println("***** add *****");
         navigator.add(file1, "/Storage");
@@ -27,13 +31,13 @@ public class Main {
         System.out.println(navigator.filterBySize(5));
 
         System.out.println("***** remove *****");
-        navigator.remove("/Programs");
-        System.out.println(navigator.find("/Programs"));
+        System.out.println(navigator.remove("/Programs"));
 
         System.out.println("***** sortBySize *****");
         List<FileData> sortedFiles = navigator.sortBySize();
         System.out.println(sortedFiles);
 
+        // Task #2 tests
         List<String> testStrings = new ArrayList<>(Arrays.asList(
                 "Привет", "Мир", "Привет", "!"));
         System.out.println(SetUtils.convertToUnique(testStrings));

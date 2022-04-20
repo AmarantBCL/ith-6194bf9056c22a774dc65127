@@ -4,8 +4,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.LinkedHashSet;
 import java.util.Comparator;
+import java.util.LinkedHashSet;
 
 public class SetUtils {
     public static Set<String> convertToUnique(List<String> strings) {

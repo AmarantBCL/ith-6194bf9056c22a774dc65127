@@ -38,8 +38,8 @@ public class FileNavigator {
         return filesBySize;
     }
 
-    public void remove(String path) {
-        allFiles.remove(path);
+    public List<FileData> remove(String path) {
+        return allFiles.remove(path);
     }
 
     public List<FileData> sortBySize() {
@@ -50,7 +50,7 @@ public class FileNavigator {
         files.sort(new Comparator<FileData>() {
             @Override
             public int compare(FileData o1, FileData o2) {
-                return (int) (o1.getSize() - o2.getSize());
+                return Long.compare(o1.getSize(), o2.getSize());
             }
         });
         return files;
