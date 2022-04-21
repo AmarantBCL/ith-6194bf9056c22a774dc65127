@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FileNavigator {
-    private final HashMap<String, List<FileData>> allFiles = new HashMap<>();
+    private final Map<String, List<FileData>> allFiles = new HashMap<>();
 
     public Map<String, List<FileData>> getAllFiles() {
         return allFiles;
