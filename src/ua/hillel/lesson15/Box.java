@@ -10,8 +10,8 @@ public class Box<T extends Fruit> {
         fruits.add(fruit);
     }
 
-    public void putMany(List<? extends T> fruits) {
-        this.fruits.addAll(fruits);
+    public void putMany(List<T> fruitsPile) {
+        this.fruits.addAll(fruitsPile);
     }
 
     public float getWeight() {
@@ -20,6 +20,10 @@ public class Box<T extends Fruit> {
             weight += fruit.getWeight();
         }
         return weight;
+    }
+
+    public boolean compare(Box<? extends Fruit> box) {
+        return getWeight() == box.getWeight();
     }
 
     public void print() {

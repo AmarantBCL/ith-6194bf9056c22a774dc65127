@@ -6,4 +6,11 @@ public class Orange extends Fruit {
     public float getWeight() {
         return weight;
     }
+
+    @Override
+    public String toString() {
+        return "Orange{" +
+                "weight=" + weight +
+                '}';
+    }
 }

@@ -14,38 +14,35 @@ public class Main {
         // Task #2 tests
         Apple apple = new Apple();
         Orange orange = new Orange();
-        Fruit fruit = new Apple();
-
         Box<Apple> appleBox = new Box<>();
         Box<Orange> orangeBox = new Box<>();
-        Box<Fruit> fruitBox = new Box<>();
-
+        System.out.println("***** putOne *****");
         appleBox.putOne(apple);
-//        appleBox.addOne(orange);
-//        appleBox.addOne(fruit);
-
-//        orangeBox.add(apple);
         orangeBox.putOne(orange);
-//        orangeBox.add(fruit);
-
-        fruitBox.putOne(apple);
-        fruitBox.putOne(orange);
-        fruitBox.putOne(fruit);
-
-        List<Apple> apples = Arrays.asList(new Apple(), new Apple());
-        List<Orange> oranges = Arrays.asList(new Orange(), new Orange(), new Orange());
-
-        appleBox.putMany(apples);
-//        appleBox.addSeveral(oranges);
-
-//        orangeBox.addSeveral(apples);
-        orangeBox.putMany(oranges);
-
         appleBox.print();
         orangeBox.print();
 
-        System.out.println(appleBox.getWeight());
-        System.out.println(orangeBox.getWeight());
+        System.out.println("***** putMany *****");
+        List<Apple> apples = Arrays.asList(new Apple(), new Apple());
+        List<Orange> oranges = Arrays.asList(new Orange(), new Orange(), new Orange());
+        appleBox.putMany(apples);
+        orangeBox.putMany(oranges);
+        appleBox.print();
+        orangeBox.print();
+
+        System.out.println("***** getWeight *****");
+        System.out.println("Apple box weight: " + appleBox.getWeight());
+        System.out.println("Orange box weight: " + orangeBox.getWeight());
+
+        System.out.println("***** compare *****");
+        appleBox.print();
+        orangeBox.print();
+        System.out.println("The boxes weight is equal: " + appleBox.compare(orangeBox));
+        List<Apple> moreApples = Arrays.asList(new Apple(), new Apple(), new Apple());
+        appleBox.putMany(moreApples);
+        appleBox.print();
+        orangeBox.print();
+        System.out.println("The boxes weight is equal: " + appleBox.compare(orangeBox));
     }
 
     public static <T> List<T> toList(T[] array) {
