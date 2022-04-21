@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FileNavigator {
     private final HashMap<String, List<FileData>> allFiles = new HashMap<>();
 
-    public HashMap<String, List<FileData>> getAllFiles() {
+    public Map<String, List<FileData>> getAllFiles() {
         return allFiles;
     }
 
