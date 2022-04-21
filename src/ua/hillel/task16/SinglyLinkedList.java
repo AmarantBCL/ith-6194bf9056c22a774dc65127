@@ -1,5 +1,6 @@
 package ua.hillel.task16;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 public class SinglyLinkedList<E> implements CustomList<E> {
@@ -54,13 +55,12 @@ public class SinglyLinkedList<E> implements CustomList<E> {
         }
 
         if (prev == null) {
+            size--;
             if (current.next == null) {
                 first = null;
-                size--;
                 return true;
             }
             first = current.next;
-            size--;
             return true;
         }
 
