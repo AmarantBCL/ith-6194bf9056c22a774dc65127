@@ -6,6 +6,10 @@ import java.util.List;
 public class Box<T extends Fruit> {
     private final List<T> fruits = new ArrayList<>();
 
+    public List<T> getFruits() {
+        return fruits;
+    }
+
     public void putOne(T fruit) {
         fruits.add(fruit);
     }
@@ -24,6 +28,11 @@ public class Box<T extends Fruit> {
 
     public boolean compare(Box<? extends Fruit> box) {
         return getWeight() == box.getWeight();
+    }
+
+    public void merge(Box<T> box) {
+        fruits.addAll(box.getFruits());
+        box.getFruits().clear();
     }
 
     public void print() {

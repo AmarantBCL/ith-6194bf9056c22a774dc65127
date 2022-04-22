@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // Task #1 tests
-        String[] strArr = {"hi", "hey", "yo", "hello"};
+        String[] strArr = {"hello", "hi", "hey", "yo", "what's up"};
         Integer[] intArr = {1, 2, 3, 4, 5};
         System.out.println(toList(strArr));
         System.out.println(toList(intArr));
@@ -43,6 +43,14 @@ public class Main {
         appleBox.print();
         orangeBox.print();
         System.out.println("The boxes weight is equal: " + appleBox.compare(orangeBox));
+
+        System.out.println("***** merge *****");
+        Box<Orange> newOrangeBox = new Box<>();
+        newOrangeBox.putOne(new Orange());
+        newOrangeBox.print();
+        newOrangeBox.merge(orangeBox);
+        newOrangeBox.print();
+        orangeBox.print();
     }
 
     public static <T> List<T> toList(T[] array) {

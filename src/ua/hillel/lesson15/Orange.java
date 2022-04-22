@@ -1,16 +1,16 @@
 package ua.hillel.lesson15;
 
 public class Orange extends Fruit {
-    private float weight = 1.5F;
+    private static final float WEIGHT = 1.5F;
 
     public float getWeight() {
-        return weight;
+        return WEIGHT;
     }
 
     @Override
     public String toString() {
         return "Orange{" +
-                "weight=" + weight +
+                "weight=" + WEIGHT +
                 '}';
     }
 }
