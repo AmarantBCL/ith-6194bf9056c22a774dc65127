@@ -1,12 +1,18 @@
 package ua.hillel.task16;
 
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
         SinglyLinkedList<Integer> digits = new SinglyLinkedList<>();
-
         digits.add(1);
         digits.add(5);
         digits.add(8);
+
+        Iterator<Integer> iterator = digits.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
 
 //        System.out.println("First: " + digits.get(0));
 //        System.out.println("Second: " + digits.get(1));

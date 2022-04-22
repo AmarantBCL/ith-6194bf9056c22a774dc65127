@@ -1,11 +1,16 @@
 package ua.hillel.task16;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class SinglyLinkedList<E> implements CustomList<E> {
     private int size;
     private Node<E> first;
+
+    public Iterator<E> iterator() {
+        return new SinglyListIterator(first);
+    }
 
     @Override
     public int size() {
@@ -46,14 +51,12 @@ public class SinglyLinkedList<E> implements CustomList<E> {
     @Override
     public boolean remove(int index) {
         Objects.checkIndex(index, size);
-
         Node<E> prev = null;
         Node<E> current = first;
         for (int i = 1; i <= index; i++) {
             prev = current;
             current = current.next;
         }
-
         if (prev == null) {
             size--;
             if (current.next == null) {
@@ -63,7 +66,6 @@ public class SinglyLinkedList<E> implements CustomList<E> {
             first = current.next;
             return true;
         }
-
         prev.next = current.next;
         size--;
         return true;
@@ -75,6 +77,29 @@ public class SinglyLinkedList<E> implements CustomList<E> {
 
         Node(E value) {
             this.value = value;
+        }
+    }
+
+    private class SinglyListIterator implements Iterator<E> {
+        private Node<E> current;
+
+        public SinglyListIterator(Node<E> first) {
+            current = first;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            if (current == null) {
+                throw new NoSuchElementException();
+            }
+            E value = current.value;
+            current = current.next;
+            return value;
         }
     }
 }
