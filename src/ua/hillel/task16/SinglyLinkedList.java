@@ -1,6 +1,5 @@
 package ua.hillel.task16;
 
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
@@ -8,7 +7,7 @@ public class SinglyLinkedList<E> implements CustomList<E> {
     private int size;
     private Node<E> first;
 
-    public Iterator<E> iterator() {
+    public CustomIterator<E> iterator() {
         return new SinglyListIterator();
     }
 
@@ -78,10 +77,10 @@ public class SinglyLinkedList<E> implements CustomList<E> {
         }
     }
 
-    private class SinglyListIterator implements Iterator<E> {
+    private class SinglyListIterator implements CustomIterator<E> {
         private Node<E> current;
 
-        public SinglyListIterator() {
+        private SinglyListIterator() {
             current = first;
         }
 

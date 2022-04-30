@@ -1,7 +1,5 @@
 package ua.hillel.task16;
 
-import java.util.Iterator;
-
 public class Main {
     public static void main(String[] args) {
         // SinglyLinkedList
@@ -10,7 +8,7 @@ public class Main {
         digits.add(5);
         digits.add(8);
         System.out.println("***** SinglyLinkedList Iterator *****");
-        Iterator<Integer> iterator = digits.iterator();
+        CustomIterator<Integer> iterator = digits.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
@@ -30,15 +28,36 @@ public class Main {
         System.out.println(strings.get(2));
         System.out.println(strings.get(3));
         System.out.println(strings.get(4));
+        System.out.println("***** DoublyLinkedList Iterator *****");
+        iterateDoublyList(strings);
+        System.out.println("***** DoublyLinkedList ReverseIterator *****");
+        iterateReverseDoublyList(strings);
         System.out.println("***** remove *****");
+        System.out.println(strings.remove(0));
+        System.out.println(strings.remove(3));
         System.out.println(strings.remove(2));
-        printDoublyLinkedList(strings);
+        System.out.println(strings.remove(1));
+        System.out.println(strings.remove(0));
+        System.out.println("***** removeFirst & removeLast *****");
+        strings.add("antelope");
+        strings.add("bull");
+        strings.add("camel");
+        strings.removeFirst();
+        strings.removeLast();
+        System.out.println(strings.get(0));
     }
 
-    private static <T> void printDoublyLinkedList(DoublyLinkedList<T> list) {
-        Iterator<T> iterator = list.iterator();
+    private static <T> void iterateDoublyList(DoublyLinkedList<T> list) {
+        CustomIterator<T> iterator = list.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
+        }
+    }
+
+    private static <T> void iterateReverseDoublyList(DoublyLinkedList<T> list) {
+        CustomReverseIterator<T> reverseIterator = list.reverseIterator();
+        while (reverseIterator.hasNext()) {
+            System.out.println(reverseIterator.next());
         }
     }
 }

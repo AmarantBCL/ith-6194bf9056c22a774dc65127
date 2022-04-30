@@ -1,16 +1,19 @@
 package ua.hillel.task16;
 
-import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class DoublyLinkedList<E> implements CustomList<E> {
+public class DoublyLinkedList<E> implements CustomList<E>, CustomDoublyList<E> {
     private int size;
     private Node<E> first;
     private Node<E> last;
 
-    public DoublyListIterator iterator() {
+    public CustomIterator<E> iterator() {
         return new DoublyListIterator();
+    }
+
+    public CustomReverseIterator<E> reverseIterator() {
+        return new DoublyListReverseIterator();
     }
 
     @Override
@@ -29,7 +32,7 @@ public class DoublyLinkedList<E> implements CustomList<E> {
         add(first, element);
     }
 
-    public void add(Node<E> node, E element) {
+    private void add(Node<E> node, E element) {
         Node<E> current = node;
         for (int i = 0; i < size; i++) {
             if (current.next == null) {
@@ -48,9 +51,17 @@ public class DoublyLinkedList<E> implements CustomList<E> {
         Objects.checkIndex(index, size);
         if (index == 0) return first.value;
         if (index == size - 1) return last.value;
-        Node<E> current = first;
-        for (int i = 1; i <= index; i++) {
-            current = current.next;
+        Node<E> current;
+        if (index <= size / 2) {
+            current = first;
+            for (int i = 1; i <= index; i++) {
+                current = current.next;
+            }
+        } else {
+            current = last;
+            for (int i = size - 1; i > index; i--) {
+                current = current.previous;
+            }
         }
         return current.value;
     }
@@ -58,25 +69,36 @@ public class DoublyLinkedList<E> implements CustomList<E> {
     @Override
     public boolean remove(int index) {
         Objects.checkIndex(index, size);
-        if (index == 0 || index == size - 1) {
-            if (index == 0) {
-                first = first.next;
-                first.previous = null;
-            } else {
-                last = last.previous;
-                last.next = null;
-            }
-            size--;
-            return true;
-        }
+        if (index == 0) return removeFirst();
+        if (index == size - 1) return removeLast();
         Node<E> prev = null;
         Node<E> current = first;
         for (int i = 1; i <= index; i++) {
             prev = current;
             current = current.next;
         }
+        if (prev == null) {
+            removeFirst(); // SOLUTION?
+            return true;
+        }
         current.previous = prev;
-        prev.next = current.next;
+        prev.next = current.next; // TODO solve NullPointerException
+        size--;
+        return true;
+    }
+
+    public boolean removeFirst() {
+        if (first == null) return false;
+        first.previous = null;
+        first = first.next;
+        size--;
+        return true;
+    }
+
+    public boolean removeLast() {
+        if (last == null) return false;
+        last = last.previous;
+        last.next = null;
         size--;
         return true;
     }
@@ -91,10 +113,10 @@ public class DoublyLinkedList<E> implements CustomList<E> {
         }
     }
 
-    private class DoublyListIterator implements Iterator<E> {
+    private class DoublyListIterator implements CustomIterator<E> {
         private Node<E> current;
 
-        public DoublyListIterator() {
+        private DoublyListIterator() {
             current = first;
         }
 
@@ -105,12 +127,34 @@ public class DoublyLinkedList<E> implements CustomList<E> {
 
         @Override
         public E next() {
-            Node<E> node = first;
             if (current == null) {
                 throw new NoSuchElementException();
             }
             E value = current.value;
             current = current.next;
+            return value;
+        }
+    }
+
+    private class DoublyListReverseIterator implements CustomReverseIterator<E> {
+        private Node<E> current;
+
+        private DoublyListReverseIterator() {
+            current = last;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            if (current == null) {
+                throw new NoSuchElementException();
+            }
+            E value = current.value;
+            current = current.previous;
             return value;
         }
     }
