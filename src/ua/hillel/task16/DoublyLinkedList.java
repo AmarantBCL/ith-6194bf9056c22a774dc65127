@@ -71,18 +71,14 @@ public class DoublyLinkedList<E> implements CustomList<E>, CustomDoublyList<E> {
         Objects.checkIndex(index, size);
         if (index == 0) return removeFirst();
         if (index == size - 1) return removeLast();
-        Node<E> prev = null;
         Node<E> current = first;
+        Node<E> prev = current;
         for (int i = 1; i <= index; i++) {
             prev = current;
             current = current.next;
         }
-        if (prev == null) {
-            removeFirst(); // SOLUTION?
-            return true;
-        }
         current.previous = prev;
-        prev.next = current.next; // TODO solve NullPointerException
+        prev.next = current.next;
         size--;
         return true;
     }
