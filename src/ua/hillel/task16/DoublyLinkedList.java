@@ -72,7 +72,7 @@ public class DoublyLinkedList<E> implements CustomList<E>, CustomDoublyList<E> {
         if (index == 0) return removeFirst();
         if (index == size - 1) return removeLast();
         Node<E> current = first;
-        Node<E> prev = current;
+        Node<E> prev = null;
         for (int i = 1; i <= index; i++) {
             prev = current;
             current = current.next;
