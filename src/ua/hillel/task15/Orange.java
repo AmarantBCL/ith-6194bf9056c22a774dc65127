@@ -1,4 +1,4 @@
-package ua.hillel.lesson15;
+package ua.hillel.task15;
 
 public class Orange extends Fruit {
     private static final float WEIGHT = 1.5F;

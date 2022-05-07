@@ -1,4 +1,4 @@
-package ua.hillel.lesson15;
+package ua.hillel.task15;
 
 import java.util.ArrayList;
 import java.util.List;
