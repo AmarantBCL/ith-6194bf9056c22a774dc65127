@@ -1,9 +1,9 @@
 package ua.hillel.task17;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -25,17 +25,18 @@ public class FileLogger {
     }
 
     private void writeMessage(String message, String type) {
-        if (config.getFile().length() >= config.getMaxSize()) {
-            config.createNewFile();
-            /* Здесь можно вызвать Exception вместо создания нового файла (было также одним из подзаданий) */
-            // throw new FileMaxSizeReachedException(String.format("File '%s' size: %d, max size: %d",
-            // file.getPath(), file.length(), config.getMaxSize()));
+        try {
+            if (Files.size(config.getPath()) >= config.getMaxSize()) {
+                config.createNewFile();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        File file = config.getFile();
         String timeStr = TIME_FORMAT.format((LocalDateTime.now()));
-        String messageStr = String.format(config.getFormat() + "\n", timeStr, type, message);
-        try (BufferedWriter bf = new BufferedWriter(new FileWriter(file, true))) {
+        String messageStr = String.format(config.getFormat(), timeStr, type, message);
+        try (BufferedWriter bf = Files.newBufferedWriter(config.getPath(), StandardOpenOption.APPEND)) {
             bf.write(messageStr);
+            bf.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }

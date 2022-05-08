@@ -1,6 +1,8 @@
 package ua.hillel.task17;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,11 +12,11 @@ public class FileLoggerConfiguration {
     private final LoggingLevel logLevel;
     private final long maxSize;
     private final String format;
-    private final String filePath;
-    private File file;
+    private final String pathName;
+    private Path path;
 
-    public File getFile() {
-        return file;
+    public Path getPath() {
+        return path;
     }
 
     public LoggingLevel getLogLevel() {
@@ -29,8 +31,8 @@ public class FileLoggerConfiguration {
         return format;
     }
 
-    public FileLoggerConfiguration(String filePath, LoggingLevel logLevel, long maxSize, String format) {
-        this.filePath = filePath;
+    public FileLoggerConfiguration(String pathName, LoggingLevel logLevel, long maxSize, String format) {
+        this.pathName = pathName;
         this.logLevel = logLevel;
         this.maxSize = maxSize;
         this.format = format;
@@ -39,6 +41,10 @@ public class FileLoggerConfiguration {
 
     public void createNewFile() {
         String fileName = "Log_" + TIME_FORMAT.format(LocalDateTime.now()) + ".txt";
-        file = new File(filePath + fileName);
+        try {
+            path = Files.createFile(Path.of(pathName, fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

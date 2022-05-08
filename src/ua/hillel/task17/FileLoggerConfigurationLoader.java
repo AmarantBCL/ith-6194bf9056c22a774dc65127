@@ -1,8 +1,9 @@
 package ua.hillel.task17;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -11,10 +12,10 @@ import java.util.regex.Pattern;
 public class FileLoggerConfigurationLoader {
     private static final Pattern CONFIG_PATTERN = Pattern.compile("^.+?:\s(.+)$");
 
-    public FileLoggerConfiguration load(String path) {
+    public FileLoggerConfiguration load(String pathName) {
         List<String> params = new ArrayList<>();
         String line;
-        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader br = Files.newBufferedReader(Path.of(pathName))) {
             while ((line = br.readLine()) != null) {
                 Matcher matcher = CONFIG_PATTERN.matcher(line);
                 while (matcher.find()) {
