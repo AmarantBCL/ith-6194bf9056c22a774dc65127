@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class FileLogger {
-    private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
+    private static final DateTimeFormatter MESSAGE_TIME_FORMAT = DateTimeFormatter.ofPattern(
+            "dd.MM.yyyy HH:mm:ss");
     private final FileLoggerConfiguration config;
 
     public FileLogger(FileLoggerConfiguration config) {
@@ -32,10 +33,11 @@ public class FileLogger {
             // file.getPath(), file.length(), config.getMaxSize()));
         }
         File file = config.getFile();
-        String timeStr = TIME_FORMAT.format((LocalDateTime.now()));
-        String messageStr = String.format(config.getFormat() + "\n", timeStr, type, message);
-        try (BufferedWriter bf = new BufferedWriter(new FileWriter(file, true))) {
-            bf.write(messageStr);
+        String timeStr = MESSAGE_TIME_FORMAT.format((LocalDateTime.now()));
+        String messageStr = String.format(config.getFormat(), timeStr, type, message);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
+            bw.write(messageStr);
+            bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
