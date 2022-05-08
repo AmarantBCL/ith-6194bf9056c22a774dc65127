@@ -15,12 +15,13 @@ public class StdoutLogger implements Logger {
 
     @Override
     public void debug(String message) {
-        if (config.getLogLevel() == LoggingLevel.INFO) return;
+        if (config.getLogLevel().ordinal() < LoggingLevel.DEBUG.ordinal()) return;
         writeMessage(message, "DEBUG");
     }
 
     @Override
     public void info(String message) {
+        if (config.getLogLevel().ordinal() < LoggingLevel.INFO.ordinal()) return;
         writeMessage(message, "INFO");
     }
 
