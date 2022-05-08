@@ -6,10 +6,10 @@ import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 
-public class FileLogger implements Logger {
+public class StdoutLogger implements Logger {
     private final LoggerConfiguration config;
 
-    public FileLogger(LoggerConfiguration config) {
+    public StdoutLogger(LoggerConfiguration config) {
         this.config = config;
     }
 
@@ -34,6 +34,7 @@ public class FileLogger implements Logger {
         }
         String timeStr = LoggerConfiguration.MESSAGE_TIME_FORMAT.format((LocalDateTime.now()));
         String messageStr = String.format(config.getFormat(), timeStr, type, message);
+        System.out.println(messageStr);
         try (BufferedWriter bf = Files.newBufferedWriter(config.getPath(), StandardOpenOption.APPEND)) {
             bf.write(messageStr);
             bf.newLine();

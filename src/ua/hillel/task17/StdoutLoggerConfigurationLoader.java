@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class FileLoggerConfigurationLoader implements LoggerConfigurationLoader {
+public class StdoutLoggerConfigurationLoader implements LoggerConfigurationLoader {
     private static final Pattern CONFIG_PATTERN = Pattern.compile("^.+?:\s(.+)$");
 
     @Override
@@ -27,7 +27,7 @@ public class FileLoggerConfigurationLoader implements LoggerConfigurationLoader 
             e.printStackTrace();
         }
         try {
-            return new FileLoggerConfiguration(params.get(0),
+            return new StdoutLoggerConfiguration(params.get(0),
                     LoggingLevel.valueOf(params.get(1)),
                     Long.parseLong(params.get(2)),
                     params.get(3));
