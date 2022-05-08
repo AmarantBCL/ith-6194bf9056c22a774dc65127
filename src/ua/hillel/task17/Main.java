@@ -5,7 +5,7 @@ public class Main {
         FileLoggerConfigurationLoader configLoader = new FileLoggerConfigurationLoader();
         FileLoggerConfiguration config = configLoader.load("config.ini");
         FileLogger log = new FileLogger(config);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 5; i++) {
             log.debug("Debug test string");
             log.info("Info test string");
         }
