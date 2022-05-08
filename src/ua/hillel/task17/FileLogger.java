@@ -28,9 +28,10 @@ public class FileLogger {
     private void writeMessage(String message, String type) {
         if (config.getFile().length() >= config.getMaxSize()) {
             config.createNewFile();
-            /* Здесь можно вызвать Exception вместо создания нового файла (было также одним из подзаданий) */
-            // throw new FileMaxSizeReachedException(String.format("File '%s' size: %d, max size: %d",
-            // file.getPath(), file.length(), config.getMaxSize()));
+            /* Здесь можно вызвать Exception вместо создания нового файла (было также одним из подзаданий)
+             throw new FileMaxSizeReachedException(String.format("File '%s' size: %d, max size: %d",
+                     config.getFile().getPath(), config.getFile().length(), config.getMaxSize()));
+             */
         }
         File file = config.getFile();
         String timeStr = MESSAGE_TIME_FORMAT.format((LocalDateTime.now()));
