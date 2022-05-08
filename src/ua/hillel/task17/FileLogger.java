@@ -34,9 +34,9 @@ public class FileLogger implements Logger {
         }
         String timeStr = LoggerConfiguration.MESSAGE_TIME_FORMAT.format((LocalDateTime.now()));
         String messageStr = String.format(config.getFormat(), timeStr, type, message);
-        try (BufferedWriter bf = Files.newBufferedWriter(config.getPath(), StandardOpenOption.APPEND)) {
-            bf.write(messageStr);
-            bf.newLine();
+        try (BufferedWriter bw = Files.newBufferedWriter(config.getPath(), StandardOpenOption.APPEND)) {
+            bw.write(messageStr);
+            bw.newLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
