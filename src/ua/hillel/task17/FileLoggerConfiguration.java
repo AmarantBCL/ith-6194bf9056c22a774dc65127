@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class FileLoggerConfiguration {
+    private final static String FILE_PREFIX = "Log_";
+    private final static String FILE_FORMAT = ".txt";
     private final static DateTimeFormatter FILE_NAME_TIME_FORMAT = DateTimeFormatter.ofPattern(
             "dd.MM.yyyy-HH_mm_ss_SSS");
 
@@ -39,7 +41,7 @@ public class FileLoggerConfiguration {
     }
 
     public void createNewFile() {
-        String fileName = "Log_" + FILE_NAME_TIME_FORMAT.format(LocalDateTime.now()) + ".txt";
+        String fileName = FILE_PREFIX + FILE_NAME_TIME_FORMAT.format(LocalDateTime.now()) + FILE_FORMAT;
         file = new File(filePath + fileName);
     }
 }
