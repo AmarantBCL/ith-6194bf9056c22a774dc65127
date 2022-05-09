@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class FileLoggerConfiguration {
-    private final static String FILE_PREFIX = "Log_";
-    private final static String FILE_FORMAT = ".txt";
-    private final static DateTimeFormatter FILE_NAME_TIME_FORMAT = DateTimeFormatter.ofPattern(
+    private static final String FILE_PREFIX = "Log_";
+    private static final String FILE_FORMAT = ".txt";
+    private static final DateTimeFormatter FILE_NAME_TIME_FORMAT = DateTimeFormatter.ofPattern(
             "dd.MM.yyyy-HH_mm_ss_SSS");
 
     private final LoggingLevel logLevel;
