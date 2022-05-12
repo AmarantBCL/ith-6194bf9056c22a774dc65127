@@ -3,9 +3,9 @@ package ua.hillel.task18;
 import java.util.Arrays;
 
 public class ValueCalculator {
-    private float[] numbers;
-    private int size;
-    private int half;
+    private final float[] numbers;
+    private final int size;
+    private final int half;
 
     public ValueCalculator(float[] array) {
         numbers = array;
@@ -13,7 +13,7 @@ public class ValueCalculator {
         half = size / 2;
     }
 
-    public void doCalc() {
+    public void doCalc() throws InterruptedException {
         long start = System.currentTimeMillis();
         float[] arrA = new float[half];
         float[] arrB = new float[size - half];
@@ -24,22 +24,16 @@ public class ValueCalculator {
             for (int i = 0; i < arrA.length; i++) {
                 arrA[i] = (float) (arrA[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
             }
-            System.out.println("Thread #1 done!");
         });
         Thread t2 = new Thread(() -> {
             for (int i = 0; i < arrB.length; i++) {
                 arrB[i] = (float) (arrB[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
             }
-            System.out.println("Thread #2 done!");
         });
         t1.start();
         t2.start();
-        try {
-            t1.join();
-            t2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        t1.join();
+        t2.join();
         System.arraycopy(arrA, 0, numbers, 0, half);
         System.arraycopy(arrB, 0, numbers, half, size - half);
         long totalTime = System.currentTimeMillis() - start;
