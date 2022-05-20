@@ -6,8 +6,8 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ThreadSafeList<T> {
-    private List<T> list = new ArrayList<>();
-    private ReadWriteLock lock = new ReentrantReadWriteLock();
+    private final List<T> list = new ArrayList<>();
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
     public void add(T element) {
         try {

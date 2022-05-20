@@ -11,9 +11,9 @@ public class PetrolStation {
     private static final int MAX_REFUEL_TIME = 10;
 
     private float amount;
-    private Random random = new Random();
-    private Semaphore semaphore = new Semaphore(MAX_REFUELS_AT_TIME);
-    private ReadWriteLock lock = new ReentrantReadWriteLock();
+    private final Random random = new Random();
+    private final Semaphore semaphore = new Semaphore(MAX_REFUELS_AT_TIME);
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
     public PetrolStation(int amount) {
         this.amount = amount;
@@ -42,11 +42,7 @@ public class PetrolStation {
     private void depleteFuel(float fuel) {
         try {
             lock.writeLock().lock();
-            if (getAmount() - fuel >= 0) {
-                amount -= fuel;
-            } else {
-                amount -= amount;
-            }
+            amount -= (getAmount() - fuel >= 0) ? fuel : amount;
         } finally {
             lock.writeLock().unlock();
         }
