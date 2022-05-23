@@ -1,14 +1,16 @@
 package ua.hillel.task20;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.UUID;
 
 public class Product {
-    private final String category;
+    private final ProductCategory category;
     private float price;
     private boolean isDiscounted;
-    private LocalDateTime dateTime;
+    private final LocalDate date;
+    private final UUID id;
 
-    public String getCategory() {
+    public ProductCategory getCategory() {
         return category;
     }
 
@@ -20,28 +22,26 @@ public class Product {
         return isDiscounted;
     }
 
-    public LocalDateTime getTime() {
-        return dateTime;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public Product(String category, float price) {
+    public Product(ProductCategory category, float price, boolean isDiscounted, LocalDate date) {
         this.category = category;
         this.price = price;
-        dateTime = LocalDateTime.now();
-    }
-
-    public Product(String category, float price, boolean isDiscounted) {
-        this(category, price);
         this.isDiscounted = isDiscounted;
+        this.date = date;
+        id = UUID.randomUUID();
     }
 
     @Override
     public String toString() {
         return "Product{" +
-                "category='" + category + '\'' +
+                "category=" + category +
                 ", price=" + price +
                 ", isDiscounted=" + isDiscounted +
-                ", dateTime=" + dateTime +
+                ", date=" + date +
+                ", id=" + id +
                 '}';
     }
 }
