@@ -20,6 +20,10 @@ public class FileLoggerConfiguration {
         return file;
     }
 
+    public String getFilePath() {
+        return filePath;
+    }
+
     public LoggingLevel getLogLevel() {
         return logLevel;
     }
@@ -37,7 +41,6 @@ public class FileLoggerConfiguration {
         this.logLevel = logLevel;
         this.maxSize = maxSize;
         this.format = format;
-        createNewFile();
     }
 
     public void createNewFile() {
