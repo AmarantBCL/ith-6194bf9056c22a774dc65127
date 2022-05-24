@@ -3,7 +3,6 @@ package ua.hillel.task20;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -52,11 +51,8 @@ public class Main {
         System.out.println(calculatedBooks);
         System.out.println();
 
-        System.out.println("***** Grouping by category: TOY *****");
-        Map<ProductCategory, List<Product>> group = catalogue.group(ProductCategory.TOY);
-        System.out.println(group.keySet());
-        for (List<Product> prods : group.values()) {
-            System.out.println(prods);
-        }
+        System.out.println("***** Grouping items by category *****");
+        Dictionary group = catalogue.groupByCategory();
+        System.out.println(group);
     }
 }

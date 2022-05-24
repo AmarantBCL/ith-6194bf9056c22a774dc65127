@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public class Product {
+    private static final int DISCOUNT = 10;
+
     private final ProductCategory category;
     private float price;
     private boolean isDiscounted;
@@ -32,6 +34,10 @@ public class Product {
         this.isDiscounted = isDiscounted;
         this.date = date;
         id = UUID.randomUUID();
+    }
+
+    public void applyDiscount() {
+        price -= price * DISCOUNT / 100;
     }
 
     @Override

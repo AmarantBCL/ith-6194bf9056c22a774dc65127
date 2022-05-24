@@ -3,7 +3,6 @@ package ua.hillel.task20;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Catalogue {
@@ -22,7 +21,7 @@ public class Catalogue {
     public List<Product> getDiscountBooks() {
         return products.stream()
                 .filter(p -> p.getCategory() == ProductCategory.BOOK && p.isDiscounted())
-                .map(p -> new Product(p.getCategory(), p.getPrice() * 0.9f, p.isDiscounted(), p.getDate()))
+                .peek(Product::applyDiscount)
                 .collect(Collectors.toList());
     }
 
@@ -49,9 +48,8 @@ public class Catalogue {
                 .reduce(0f, Float::sum);
     }
 
-    public Map<ProductCategory, List<Product>> group(ProductCategory category) {
-        return products.stream()
-                .filter(p -> p.getCategory() == category)
-                .collect(Collectors.groupingBy(Product::getCategory));
+    public Dictionary groupByCategory() {
+        return new Dictionary(products.stream()
+                .collect(Collectors.groupingBy(Product::getCategory)));
     }
 }
