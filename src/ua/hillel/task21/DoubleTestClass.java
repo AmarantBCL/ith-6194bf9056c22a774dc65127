@@ -1,7 +1,7 @@
 package ua.hillel.task21;
 
 public class DoubleTestClass {
-    @Test(priority = 1)
+    @Test
     public void first() {
         System.out.println("Double #1");
     }
