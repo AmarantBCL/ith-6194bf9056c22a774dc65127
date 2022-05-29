@@ -6,17 +6,17 @@ public class StringTestClass {
         System.out.println("String BEFORE");
     }
 
-    @Test(priority = 1)
+    @Test
     public void second() {
         System.out.println("String #1");
     }
 
-    @Test(priority = 2)
+    @Test
     public void third() {
         System.out.println("String #2");
     }
 
-    @Test(priority = 3)
+    @Test
     public void fourth() {
         System.out.println("String #3");
     }
