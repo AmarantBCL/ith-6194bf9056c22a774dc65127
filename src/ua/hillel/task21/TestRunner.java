@@ -13,13 +13,11 @@ public class TestRunner {
             List<Method> beforeMethods = Arrays.stream(testClass.getDeclaredMethods())
                     .filter(m -> m.isAnnotationPresent(BeforeSuite.class))
                     .collect(Collectors.toList());
-            if (beforeMethods.size() > 1) throw new WrongSuiteCountException(
-                    testClass.getName() + " has more than one @BeforeSuite method");
+            if (beforeMethods.size() > 1) throw new WrongSuiteCountException(testClass.getName() + " has more than one @BeforeSuite method");
             List<Method> afterMethods = Arrays.stream(testClass.getDeclaredMethods())
                     .filter(m -> m.isAnnotationPresent(AfterSuite.class))
                     .collect(Collectors.toList());
-            if (afterMethods.size() > 1) throw new WrongSuiteCountException(
-                    testClass.getName() + " has more than one @AfterSuite method");
+            if (afterMethods.size() > 1) throw new WrongSuiteCountException(testClass.getName() + " has more than one @AfterSuite method");
             List<Method> testMethods = Arrays.stream(testClass.getDeclaredMethods())
                     .filter(m -> m.isAnnotationPresent(Test.class))
                     .sorted(Comparator.comparingInt(m -> m.getAnnotation(Test.class).priority()))
