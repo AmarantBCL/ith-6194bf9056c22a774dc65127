@@ -22,6 +22,30 @@ public class ArrayUtilsTest {
     @Test
     void shouldThrowRuntimeException_whenFourIsNotPresent() {
         int[] given = new int[]{1, 2, 1, 7};
-        Assertions.assertThrows(RuntimeException.class, () -> ArrayUtils.lastFourArray(given));
+        Assertions.assertThrowsExactly(RuntimeException.class, () -> ArrayUtils.lastFourArray(given));
+    }
+
+    @Test
+    void shouldReturnTrue_whenOneAndFourArePresent() {
+        int[] given = new int[]{1, 1, 1, 4, 4, 1, 4, 4};
+        Assertions.assertTrue(ArrayUtils.isOneAndFourArray(given));
+    }
+
+    @Test
+    void shouldReturnFalse_whenFourIsAbsent() {
+        int[] given = new int[]{1, 1, 1, 1, 1, 1};
+        Assertions.assertFalse(ArrayUtils.isOneAndFourArray(given));
+    }
+
+    @Test
+    void shouldReturnFalse_whenOneIsAbsent() {
+        int[] given = new int[]{4, 4, 4, 4};
+        Assertions.assertFalse(ArrayUtils.isOneAndFourArray(given));
+    }
+
+    @Test
+    void shouldReturnFalse_whenOneAndFourWithRandomDigitsArePresent() {
+        int[] given = new int[]{1, 4, 4, 1, 1, 4, 3};
+        Assertions.assertFalse(ArrayUtils.isOneAndFourArray(given));
     }
 }

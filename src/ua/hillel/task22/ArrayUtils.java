@@ -12,4 +12,18 @@ public class ArrayUtils {
         }
         throw new RuntimeException("The array must have at least one element with value = 4");
     }
+
+    public static boolean isOneAndFourArray(int[] arr) {
+        boolean isOne = false;
+        boolean isFour = false;
+        for (int i : arr) {
+            if (i != 1 && i != 4) return false;
+            if (i == 1) {
+                isOne = true;
+            } else {
+                isFour = true;
+            }
+        }
+        return isOne && isFour;
+    }
 }
