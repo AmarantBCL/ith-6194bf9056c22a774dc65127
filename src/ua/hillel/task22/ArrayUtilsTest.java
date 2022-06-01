@@ -62,10 +62,22 @@ public class ArrayUtilsTest {
 
     private static Stream<Arguments> provideArraysWhenFourIsNotPresent() {
         return Stream.of(
-                Arguments.of(new int[]{1, 2, 1, 7}, new int[0]),
-                Arguments.of(new int[]{1, 2, 1}, new int[0]),
-                Arguments.of(new int[]{1, 2}, new int[0]),
-                Arguments.of(new int[]{1}, new int[0])
+                Arguments.of(new int[]{1, 2, 1, 7}),
+                Arguments.of(new int[]{1, 2, 1}),
+                Arguments.of(new int[]{1, 2}),
+                Arguments.of(new int[]{1})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideEmptyArray")
+    void shouldThrowRuntimeException_whenArrayIsEmpty(int[] given) {
+        Assertions.assertThrowsExactly(RuntimeException.class, () -> ArrayUtils.lastFourArray(given));
+    }
+
+    private static Stream<Arguments> provideEmptyArray() {
+        return Stream.of(
+                Arguments.of(new int[0])
         );
     }
 
