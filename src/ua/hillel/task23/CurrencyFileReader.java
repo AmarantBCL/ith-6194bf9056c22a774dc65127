@@ -7,9 +7,9 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class CurrencyFileReader {
-    public ExchangeRate read() {
+    public ExchangeRate read(LocalDate localDate) {
         ExchangeRate rate = new ExchangeRate();
-        String path = "Exchange_rates_" + LocalDate.now() + ".txt";
+        String path = "Exchange_rates_" + localDate + ".txt";
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = br.readLine()) != null) {
