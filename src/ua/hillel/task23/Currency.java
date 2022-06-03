@@ -12,24 +12,8 @@ public class Currency {
     private final String name;
     private final double UAH;
 
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public String getDigitalCode() {
-        return digitalCode;
-    }
-
     public String getLetterCode() {
         return letterCode;
-    }
-
-    public int getUnit() {
-        return unit;
     }
 
     public String getName() {

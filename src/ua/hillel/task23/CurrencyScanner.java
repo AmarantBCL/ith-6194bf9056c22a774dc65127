@@ -24,13 +24,11 @@ public class CurrencyScanner {
             LocalDate dateStart = params.length > 1 ? FormatUtils.parseToDate(params[1]) : LocalDate.now();
             LocalDate dateEnd = params.length > 2 ? FormatUtils.parseToDate(params[2]) : dateStart;
             List<Currency> currencies = converter.getCurrencies(params[0], dateStart, dateEnd);
-            if (currencies.get(0) == null) {
-                System.out.println("Такой валюты не существует. Попробуйте ещё раз.");
-                return;
-            }
-            Currency currency = currencies.stream().findFirst().get();
+            if (checkResponse(currencies)) return;
             double average = converter.calculateAverage(currencies);
-            info(currency, average);
+            currencies.stream()
+                    .findFirst()
+                    .ifPresent(c -> info(c, average));
         }
     }
 
@@ -45,5 +43,17 @@ public class CurrencyScanner {
                 DECIMAL_FORMAT.format(average)
         );
         isDone = true;
+    }
+
+    private boolean checkResponse(List<Currency> currencies) {
+        if (currencies.isEmpty()) {
+            System.out.println("Не найдено данных по выбранной дате");
+            return true;
+        }
+        if (currencies.get(0) == null) {
+            System.out.println("Такая валюта не найдена. Попробуйте ещё раз.");
+            return true;
+        }
+        return false;
     }
 }

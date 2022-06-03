@@ -14,11 +14,11 @@ public class ParamsValidator {
         }
         for (int i = 1; i < params.length; i++) {
             if (notValidDate(params[i])) {
-                System.out.println("Введён неверный формат параметров. Правильные варианты: " +
-                        "\nUSD" +
-                        "\nusd" +
-                        "\nUSD 01.06.2022" +
-                        "\nUSD 31.05.2022 02.06.2022");
+                System.out.println("Введён неверный формат параметров. Правильные варианты: \n" +
+                        "USD\n" +
+                        "usd\n" +
+                        "USD 01.06.2022\n" +
+                        "USD 31.05.2022 02.06.2022\n");
                 return false;
             }
         }

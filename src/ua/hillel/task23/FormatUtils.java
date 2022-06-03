@@ -31,11 +31,11 @@ public class FormatUtils {
 
     public static double parseToDouble(String doubleStr) {
         NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
-        Number number = null;
+        Number number;
         try {
             number = format.parse(doubleStr);
         } catch (ParseException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Wrong double format for parsing", e);
         }
         return number.doubleValue();
     }

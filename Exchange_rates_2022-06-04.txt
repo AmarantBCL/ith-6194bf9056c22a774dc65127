@@ -1,0 +1,2 @@
+| Date			| Time  | Digital code | Letter code |	Unit   | Currency name               | "UAH"   |
+| 04.06.2022	| 00.00 | 840	       | USD		 | 1	   | US Dollar				     | 30,012  |
