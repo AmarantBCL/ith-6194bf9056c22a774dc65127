@@ -39,7 +39,7 @@ public class CurrencyFileReader {
                 rate.add(currency);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Something went wrong with file reading.", e);
         }
         return rate;
     }
