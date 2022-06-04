@@ -7,37 +7,31 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class CurrencyConverter {
-    private static final int MAX_FILES_PER_THREAD = 2;
-    
+    private static final int MAX_FILES_PER_THREAD = 30;
+
     public List<Currency> getCurrencies(String letterCode, LocalDate dateStart, LocalDate dateEnd) {
         CurrencyFileReader reader = new CurrencyFileReader();
         List<Currency> currencies = new ArrayList<>();
         List<File> files = reader.getFiles(dateStart, dateEnd);
-        int count = files.size();
-        System.out.println(files.size() + " file(s) have been found");
-
-        // TODO concurrency...
-        ExecutorService executorService = Executors.newCachedThreadPool();
-        double d = Math.ceil((double) count / MAX_FILES_PER_THREAD);
-        for (int i = 0; i < d; i++) {
-            System.out.println("In loop");
-            executorService.execute(() -> {
-                System.out.println("Thread is executing...");
-                for (int j = 0; j < count; j++) {
-                    // TODO concurrency...
-                }
+        if (files.size() == 0) return currencies;
+        int threadCount = (int) Math.ceil((double) files.size() / MAX_FILES_PER_THREAD);
+        ExecutorService executorService = Executors.newFixedThreadPool(threadCount);
+        for (File file : files) {
+            executorService.submit(() -> {
+                ExchangeRate rate = reader.read(file);
+                Currency currency = rate.filter(letterCode);
+                currencies.add(currency);
             });
         }
         executorService.shutdown();
-
-        for (File file : files) {
-            ExchangeRate rate = reader.read(file);
-            Currency currency = rate.filter(letterCode);
-            currencies.add(currency);
+        try {
+            executorService.awaitTermination(2, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
-
         return currencies;
     }
 
