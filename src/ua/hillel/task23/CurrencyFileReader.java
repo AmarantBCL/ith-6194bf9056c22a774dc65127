@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CurrencyFileReader {
-    private static final String FILE_PREFIX = "Exchange_rates_";
+    private static final String FILE_PREFIX = "src/ua/hillel/task23/files/Exchange_rates_";
     private static final String FILE_FORMAT = ".txt";
     private static final String HEADER = "| Date";
 

@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Package: ua.hillel.task23
+Created-By: Vadym
+Main-Class: ua.hillel.task23.Main
