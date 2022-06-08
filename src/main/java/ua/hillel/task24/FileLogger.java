@@ -1,10 +1,10 @@
 package ua.hillel.task24;
 
-public class FileLogger {
-    private final FileLoggerConfiguration config;
-    private final FileLoggerWriter writer;
+public class FileLogger implements Logger {
+    private final LoggerConfiguration config;
+    private final LoggerWriter writer;
 
-    public FileLogger(FileLoggerConfiguration config) {
+    public FileLogger(LoggerConfiguration config) {
         this.config = config;
         this.writer = new FileLoggerWriter(config);
     }

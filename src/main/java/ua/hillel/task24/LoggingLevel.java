@@ -3,7 +3,7 @@ package ua.hillel.task24;
 public enum LoggingLevel {
     INFO(0), DEBUG(1);
 
-    private int level;
+    private final int level;
 
     public int getLevel() {
         return level;

@@ -7,21 +7,19 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class FileLoggerWriter {
+public class FileLoggerWriter implements LoggerWriter {
     private static final DateTimeFormatter MESSAGE_TIME_FORMAT = DateTimeFormatter.ofPattern(
             "dd.MM.yyyy HH:mm:ss");
 
-    private final FileLoggerConfiguration config;
+    private final LoggerConfiguration config;
 
-    public FileLoggerWriter(FileLoggerConfiguration config) {
+    public FileLoggerWriter(LoggerConfiguration config) {
         this.config = config;
         config.createNewFile();
     }
 
     public void write(String message) {
-        if (config.getFile().length() >= config.getMaxSize()) {
-            config.createNewFile();
-        }
+        checkNewFile();
         try {
             File file = config.getFile();
             String timeFormat = MESSAGE_TIME_FORMAT.format((LocalDateTime.now()));
@@ -32,6 +30,12 @@ public class FileLoggerWriter {
             bw.flush();
         } catch (IOException e) {
             throw new RuntimeException("Something wrong with writing into a file.", e);
+        }
+    }
+
+    private void checkNewFile() {
+        if (config.getFile().length() >= config.getMaxSize()) {
+            config.createNewFile();
         }
     }
 }
