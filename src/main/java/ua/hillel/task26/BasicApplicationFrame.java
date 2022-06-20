@@ -50,6 +50,7 @@ public class BasicApplicationFrame {
 
         var squareRootBtn = new JButton("√");
         squareRootBtn.addActionListener(event -> {
+            if (inputField.getText().isEmpty()) return;
             double result = Double.parseDouble(ResultOperation.calculate(
                     inputField.getText()).replace(",", "."));
             inputField.setText(String.valueOf(ResultOperation.DECIMAL_FORMAT.format(Math.sqrt(result))));
