@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>vpetelskyi</groupId>
-    <artifactId>task-24</artifactId>
+    <groupId>ua.hillel.vpetelskyi</groupId>
+    <artifactId>task-26</artifactId>
     <version>1.0</version>
 
     <properties>
@@ -30,7 +30,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ua.hillel.task24.Main</mainClass>
+                            <mainClass>ua.hillel.task26.Application</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
